@@ -72,9 +72,25 @@ public class HashTable {
 		
 		int[] arr = new int[this.hashTable[key].size()];
 		for (int i =0; i < this.hashTable[key].size(); i++) {
-			arr[i] = hashTable[key].get(i);
+			arr[i] = hashTable[key].get(i + this.hashTableLowerBound);
 		}
 		return arr;
+		
+	}
+	
+	/**
+	 * Searches for a value using sequential search
+	 * 
+	 * @param value
+	 * @return true if value found else false
+	 */
+	public boolean search(int value) {
+		for(int i = this.hashTableLowerBound; i < this.hashTableUpperBound; i ++) {
+			if(hashTable[i].contains(value)) {
+				return true;
+			}
+		}
+		return false;
 		
 	}
 	
